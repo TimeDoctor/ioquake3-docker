@@ -1,5 +1,5 @@
 # ioquake3-docker
-Dockerfiles for [ioquake3](https://ioquake3.org/) dedicated server
+Dockerfiles for [ioquake3](https://ioquake3.org/) dedicated server. forked from Krauskopf's.
 
 ## Setup
 
@@ -10,7 +10,7 @@ You may want to use the following docker compose file to run the server:
 version: '3.2'
 services:
  quake3:
-  image: krauskopf/ioquake3-server:latest
+  image: timedoctor/ioquake3-server:latest
   entrypoint: /home/ioq3srv/ioquake3/ioq3ded.x86_64
    +set dedicated 1
    +exec server.cfg
