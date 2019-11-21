@@ -1,0 +1,26 @@
+version: '3.2'
+services:
+ quake3:
+  image: timedoctor/ioquake3-server:latest
+  entrypoint: /home/ioq3srv/ioquake3/ioq3ded.x86_64
+   +set dedicated 1
+   +exec server.cfg
+  volumes:
+   - quake3-data:/home/ioq3srv/.q3a/:rw
+  deploy:
+   replicas: 1
+   restart_policy:
+    condition: any
+    delay: 10s
+    max_attempts: 3
+  ports:
+    - target: 27960
+      published: 27960
+      protocol: udp
+      mode: host
+volumes:
+ quake3-data:
+networks:
+ default:
+  external:
+   name: web
