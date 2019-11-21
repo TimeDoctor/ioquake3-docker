@@ -4,37 +4,7 @@ Dockerfiles for [ioquake3](https://ioquake3.org/) dedicated server. forked from 
 ## Setup
 
 ### Compose file
-You may want to use the following docker compose file to run the server:
-
-```
-version: '3.2'
-services:
- quake3:
-  image: timedoctor/ioquake3-server:latest
-  entrypoint: /home/ioq3srv/ioquake3/ioq3ded.x86_64
-   +set dedicated 1
-   +exec server.cfg
-  volumes:
-   - quake3-data:/home/ioq3srv/.q3a/:rw
-  deploy:
-   replicas: 1
-   restart_policy:
-    condition: any
-    delay: 10s
-    max_attempts: 3
-  ports:
-    - target: 27960
-      published: 27960
-      protocol: udp
-      mode: host
-volumes:
- quake3-data:
-networks:
- default:
-  external:
-   name: web
-```
-
+Edit the docker-compose.yml for your setup.
 
 ### Game files
 For the server to run, you have to copy all `.pk3` files from the `baseq3` folder in your game directory into the folder `baseq3` in the volume `quake3-data`. Note, that the `pak0.pk3` is not distributed with ioquake, but has to be taken from the original disk.
