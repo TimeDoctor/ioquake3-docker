@@ -1,5 +1,5 @@
 FROM alpine:latest as builder 
-LABEL maintainer="mail@sebakrau.de"
+LABEL maintainer="zjs@zacharyjackslater.com"
 
 # To reduce image size all build and cleanup steps are performed in one docker layer.
 RUN \
